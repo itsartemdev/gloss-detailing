@@ -26,5 +26,3 @@ export const fullAddress = `${site.address.street}, ${site.address.city}`
 export const privacyPath = '/politika-konfidencialnosti'
 export const mapOpenUrl = `https://yandex.ru/maps/?ll=${site.geo.lng}%2C${site.geo.lat}&z=17&text=${encodeURIComponent(site.mapQuery)}`
 
-export const mapEmbedUrl = `https://yandex.ru/map-widget/v1/?ll=${site.geo.lng}%2C${site.geo.lat}&z=16&mode=search&text=${encodeURIComponent(site.mapQuery)}`
-

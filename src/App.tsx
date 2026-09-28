@@ -7,7 +7,7 @@ import {
   ArrowLeft, ExternalLink, Menu, Phone, ShieldCheck, Sparkles, Star, X,
 } from 'lucide-react'
 import { cn } from './lib/utils'
-import { fullAddress, mapEmbedUrl, mapOpenUrl, privacyPath, site } from './config'
+import { fullAddress, mapOpenUrl, privacyPath, site } from './config'
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -231,7 +231,20 @@ function MapSection() {
       <div className="flex flex-col justify-between p-7 sm:p-10 lg:p-12"><div><SectionLabel>Как добраться</SectionLabel><h2 className="font-display text-4xl leading-[1.05] tracking-[-.04em] sm:text-5xl">В центре Москвы.<br /><span className="text-white/40">С удобным въездом.</span></h2><p className="mt-6 max-w-sm text-sm leading-6 text-white/55">Студия находится по адресу {fullAddress}. На месте можно безопасно оставить автомобиль на время работы.</p></div>
         <div className="mt-10 border-t border-white/10 pt-6"><div className="grid gap-5 text-sm sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2"><div><span className="block text-[10px] font-bold uppercase tracking-widest text-white/35">Адрес</span><b className="mt-1.5 block">{site.address.street}<br />{site.address.postal} {site.address.city}</b></div><div><span className="block text-[10px] font-bold uppercase tracking-widest text-white/35">Часы работы</span><b className="mt-1.5 block">{site.hours.map(item => <span key={item.days} className="block">{item.days} {item.time}</span>)}</b></div></div><a href={mapOpenUrl} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white/70 underline decoration-white/20 underline-offset-4 transition hover:text-acid">Открыть в Яндекс.Картах <ExternalLink size={14} className="opacity-50" /></a></div>
       </div>
-      <div className="relative min-h-[420px] overflow-hidden bg-ink lg:min-h-[620px]"><div className="absolute inset-0 grid place-items-center bg-ink p-8 text-center"><div><span className="mx-auto grid size-14 place-items-center rounded-full border border-white/15"><MapPin size={22} className="text-acid" /></span><b className="mt-5 block font-display text-xl">{site.address.street}</b><span className="mt-1 block text-sm text-white/50">{site.address.postal} {site.address.city}</span></div></div><iframe title={`Карта проезда к ${site.legalName}`} src={mapEmbedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="absolute inset-0 h-full w-full border-0 bg-transparent grayscale-[75%] contrast-[1.05] transition duration-700 hover:grayscale-0" /><div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/10" /></div>
+      <div className="relative flex min-h-[420px] flex-col items-center justify-center overflow-hidden bg-ink p-8 text-center lg:min-h-[620px]">
+        <div className="pointer-events-none absolute inset-0 opacity-[.16]" style={{ backgroundImage: 'linear-gradient(to right, #f1eee8 1px, transparent 1px), linear-gradient(to bottom, #f1eee8 1px, transparent 1px)', backgroundSize: '68px 68px' }} />
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-acid/25" />
+        <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-acid/25" />
+        <div className="relative">
+          <span className="relative mx-auto grid size-16 place-items-center">
+            <span className="absolute inset-0 animate-ping rounded-full bg-acid/20" />
+            <span className="relative grid size-14 place-items-center rounded-full bg-acid text-ink"><MapPin size={24} /></span>
+          </span>
+          <b className="mt-6 block font-display text-2xl leading-tight sm:text-3xl">{site.address.street}</b>
+          <span className="mt-2 block text-sm text-white/45">{site.address.postal} {site.address.city}</span>
+          <a href={mapOpenUrl} target="_blank" rel="noreferrer" className="group mt-8 inline-flex items-center gap-3 rounded-full bg-acid px-7 py-4 font-bold text-ink transition hover:bg-white">Открыть в Яндекс.Картах <ExternalLink size={16} className="opacity-45 transition group-hover:opacity-100" /></a>
+        </div>
+      </div>
     </div>
   </motion.div></section>
 }
