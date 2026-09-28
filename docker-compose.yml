@@ -1,0 +1,12 @@
+name: gloss-detailing-studio
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        REGISTRY: ${REGISTRY:-docker.io/library}
+    image: gloss-detailing-studio
+    ports:
+      - "8080:80"
+    restart: unless-stopped

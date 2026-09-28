@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: Manrope, sans-serif; color: #0a0a0a; background: #0a0a0a; font-synthesis: none; text-rendering: optimizeLegibility; }
+html { overflow-y: scroll; scrollbar-gutter: stable; scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; min-width: 320px; min-height: 100vh; overflow-x: hidden; }
+* { box-sizing: border-box; }
+::selection { color: #0a0a0a; background: #d6ff3f; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+a { text-decoration: none; }
+.accordion-content[data-state='open'] { animation: accordion-down .42s cubic-bezier(.22, 1, .36, 1); }
+.accordion-content[data-state='closed'] { animation: accordion-up .3s cubic-bezier(.55, 0, 1, .45); }
+@keyframes accordion-down { from { height: 0; opacity: 0; } to { height: var(--radix-accordion-content-height); opacity: 1; } }
+@keyframes accordion-up { from { height: var(--radix-accordion-content-height); opacity: 1; } to { height: 0; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
